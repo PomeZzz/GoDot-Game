@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/Enemigo_00.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Enemigo_02.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Enemigo_01.png" type="Texture" id=3]
+[ext_resource path="res://sprites/MiniEnemigo_00.png" type="Texture" id=4]
+[ext_resource path="res://sprites/MiniEnemigo_01.png" type="Texture" id=5]
+[ext_resource path="res://sprites/MiniEnemigo_02.png" type="Texture" id=6]
+[ext_resource path="res://Monstruo.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "mini",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "monstruo",
+"speed": 7.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 17.4642
+
+[node name="Monstruo" type="RigidBody2D"]
+collision_layer = 0
+gravity_scale = 0.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+vel_min = 150
+vel_max = 250
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "mini"
+playing = true
+
+[node name="Visibilidad" type="VisibilityNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 2 )
+
+[connection signal="screen_exited" from="Visibilidad" to="." method="_on_Visibilidad_screen_exited"]
