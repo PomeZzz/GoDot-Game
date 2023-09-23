@@ -18,4 +18,4 @@ To download all you have to do is:
 
 I am going to leave you 3 pdf with the step by step creation of this game.
 
-They will be inside the folder **called build** process within the repository -->
+They will be inside the folder called **Build Process*** within the repository -->
